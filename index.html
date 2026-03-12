@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pomodoro Timer</title>
+
+<style>
+body{
+background:transparent;
+color:white;
+font-family:Arial;
+text-align:center;
+}
+
+#timer{
+font-size:80px;
+font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="timer">25:00</div>
+
+<script>
+
+let work=1500
+let breaktime=300
+let time=work
+let mode="work"
+
+function update(){
+
+let m=Math.floor(time/60)
+let s=time%60
+
+document.getElementById("timer").innerHTML=
+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0")
+
+time--
+
+if(time<0){
+
+if(mode==="work"){
+mode="break"
+time=breaktime
+}else{
+mode="work"
+time=work
+}
+
+}
+
+}
+
+setInterval(update,1000)
+
+</script>
+
+</body>
+</html>
